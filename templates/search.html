@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search
+{% endblock %}
+
+{% block jumbo %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>
+                    Hello {{ username }},
+                </h3>
+            </div>
+            <div class="col-md-2">
+                <a href="/login"><button class="btn btn-primary">SEARCH</button></a>
+            </div>
+            <div class="col-md-2">
+                <a href="/logout"><button class="btn btn-secondary">LOGOUT</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 box-2">
+            <h3>SEARCH</h3>
+        </div>
+        <div class="col-md-9 box-1">
+            <form action={{ url_for('searchresults') }} method="GET">
+                <label>Search for a book by ISBN number, title or the author of a book.</label>
+                <input type="text" placeholder="Search books" name="query">
+                <button>GO</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

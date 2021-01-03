@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 box-1">
+            <h3>Login for returning users</h3>
+            <form action={{url_for('login') }} method="POST">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Type username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Type password">
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="btnSubmit" value="LOGIN">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 box-2">
+            <h3>New users register</h3>
+            <form action={{url_for('register') }} method="POST">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Type username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Type email address">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Type password">
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" class="btnSubmit" value="REGISTER">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

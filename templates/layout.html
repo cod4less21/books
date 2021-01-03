@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        {% block jumbo %}
+        {% endblock %}
+        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+            {% if errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in errors %}
+                        {{message}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with success = get_flashed_messages(category_filter=["success"]) %}
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    {% for message in success %}
+                        {{message}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block body %}{% endblock %}
+    </body>
+</html>
