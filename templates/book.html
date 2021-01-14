@@ -54,6 +54,7 @@
         </div>
         <div class="col-md-6 box-2">
             <h3>Goodreads metrics</h3>
+			<h6 style="text-align: center;">(Goodreads has depreciated its API)</h6>
             <table class="table table-light table-striped  table-bordered ">
                 <tr>
                     <td scope="row">Average rating</td>
@@ -86,7 +87,7 @@
         </div>
         <div class="col-md-6 box-1">
             {% if ns.review_done %}
-                REVIEW POSTED
+                <h3>REVIEW POSTED</h3>
             {% else %}
                 <h3>Review this book</h3>
                 <form action="{{url_for('submit_review') }}" method="POST">

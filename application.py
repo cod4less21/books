@@ -60,8 +60,8 @@ def register():
 def login():
     """Logs the user in and opens home page"""
 
-    username = request.form.get("username")
-    password = request.form.get("password")
+    username = request.form.get("username") or "Guest"
+    password = request.form.get("password") or "Guest"
     userid = db.execute("SELECT id FROM users WHERE username = :username and password = crypt(:pass, password)",
     {"username":username, "pass":password}).fetchone()
     if userid == None:
@@ -105,14 +105,15 @@ def books(isbn):
 
     reviews = db.execute("SELECT * FROM reviews WHERE isbn = :isbn", {"isbn":book.isbn}).fetchall()
     average = db.execute("SELECT ROUND(AVG(rating),1) FROM reviews WHERE isbn = :isbn", {"isbn":book.isbn}).fetchone()[0]
-    res = requests.get("https://www.goodreads.com/book/review_counts.json",
-                    params={"isbns":isbn, "key":"XCwQB0F1RHlrVNTFop6hIw"})
-    if res.status_code !=200:
-        data = None
-    else:
-        data = res.json()
+    # res = requests.get("https://www.goodreads.com/book/review_counts.json",
+                    # params={"isbns":isbn, "key":"XCwQB0F1RHlrVNTFop6hIw"})
+    # if res.status_code !=200:
+        # data = None
+    # else:
+        # data = res.json()
+		# data=data["books"][0]
 
-    return render_template("book.html", book=book, reviews=reviews,average=average, username=username, data=data["books"][0])
+    return render_template("book.html", book=book, reviews=reviews,average=average, username=username, data={'average_rating':'N/A', 'ratings_count':'N/A'})
 
 @app.route("/submit_review", methods=["POST"])
 def submit_review():
