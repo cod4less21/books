@@ -25,8 +25,8 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        export FLASK_APP="application.py"
-        export DATABASE_URL="postgres://gmkygsmsnolwct:b16b7cd541586a34c15ebf5e04dd4b8b9d76d0b52f54f8a0e91988bb2ade8c5f@ec2-54-157-78-113.compute-1.amazonaws.com:5432/dd266p1rlj3bro"
     - name: Run flask app
       run: |
+        export FLASK_APP="application.py"
+        export DATABASE_URL="postgres://gmkygsmsnolwct:b16b7cd541586a34c15ebf5e04dd4b8b9d76d0b52f54f8a0e91988bb2ade8c5f@ec2-54-157-78-113.compute-1.amazonaws.com:5432/dd266p1rlj3bro"
         flask run
