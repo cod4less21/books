@@ -4,3 +4,4 @@ psycopg2-binary
 SQLAlchemy
 requests
 simplejson
+gunicorn==20.0.4
